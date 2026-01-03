@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Crystal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="images/CrystalIcon.ico">
+
+<!-- FAVICON -->
+<link rel="icon" type="image/png" href="CrystalLogo.png">
+
+<style>
+/* ================= ROOT ================= */
+:root {
+  --grid: 42px;
+}
+
+/* ================= BASE ================= */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: white;
+  background: #000;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+/* ================= TOP BAR ================= */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(255,255,255,0.1);
+  backdrop-filter: blur(4px);
+}
+
+.top-tabs {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.top-tabs a {
+  color: white;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.top-tabs a:hover {
+  opacity: 1;
+}
+
+/* ================= ANIMATED BACKGROUND ================= */
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -5;
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,0.12), transparent 70%),
+    radial-gradient(circle at 70% 30%, rgba(255,255,255,0.08), transparent 70%),
+    repeating-linear-gradient(
+      to right,
+      rgba(255,255,255,0.05) 0 1px,
+      transparent 1px var(--grid)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.05) 0 1px,
+      transparent 1px var(--grid)
+    );
+  animation: bgFloat 22s linear infinite;
+  filter: blur(0.4px);
+}
+
+@keyframes bgFloat {
+  0% {
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+  100% {
+    background-position:
+      0 0,
+      200px 200px,
+      600px 600px,
+      600px 600px;
+  }
+}
+
+/* ================= FLOATING LOGO ================= */
+.crystal-logo {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  z-index: 2;
+  filter:
+    drop-shadow(0 0 30px rgba(255,255,255,0.45))
+    drop-shadow(0 0 60px rgba(255,255,255,0.2));
+  animation: crystalFloat 6s ease-in-out infinite;
+}
+
+@keyframes crystalFloat {
+  0%,100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -18px); }
+}
+
+/* ================= HERO ================= */
+.hero {
+  padding-top: 220px;
+  padding-bottom: 60px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  margin-bottom: 24px;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto 32px auto;
+  opacity: 0.9;
+  font-size: 19px;
+}
+
+/* ================= BUTTONS ================= */
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+button {
+  padding: 16px 28px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s ease-out;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px white;
+}
+
+.primary {
+  background: white;
+  color: black;
+}
+
+.secondary {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+/* ================= PREVIEW ================= */
+.preview-wrapper {
+  margin-top: 40px;
+}
+
+.preview-card {
+  background: rgba(255,255,255,0.04);
+  border-radius: 20px;
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+}
+
+.preview-tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.tab-pill {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: transparent;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.tab-pill.active {
+  background: white;
+  color: black;
+}
+
+.preview-image img {
+  width: 100%;
+  border-radius: 14px;
+  margin-top: 14px;
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+/* ================= SECTIONS ================= */
+section {
+  padding: 60px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ================= CHANGELOG ================= */
+.changelog-box {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 24px;
+  border-radius: 16px;
+}
+
+/* ================= DOWNLOAD ================= */
+.download-box {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 24px;
+  border-radius: 16px;
+}
+
+/* ================= VIDEO ================= */
+.video-wrapper {
+  margin-top: 30px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+  Crystal
+  <div class="top-tabs">
+    <a href="#home">Home</a>
+    <a href="#preview">Preview</a>
+    <a href="#changelog">Changelog</a>
+    <a href="#download">Download</a>
+  </div>
+</div>
+
+<div class="animated-bg"></div>
+<img src="CrystalLogo.png" class="crystal-logo">
+
+<!-- ================= HERO ================= -->
+<div class="hero" id="home">
+  <div class="hero-inner">
+    <h1>Sharp as a diamond.<br>Built to feel unreal.</h1>
+    <p>
+      Crystal is an ultra-clean Windows client focused on speed,
+      visuals, and total control — nothing extra.
+    </p>
+
+    <div class="buttons">
+      <button class="primary" onclick="confirmLink('https://gofile.io/d/52R60f')">Download ⭳</button>
+      <button class="secondary" onclick="confirmLink('CrystalMonaco.htm')">Open Monaco</button>
+      <button class="secondary" onclick="confirmLink('CrystalLoading.htm')">Loading Screen</button>
+      <button class="secondary" onclick="confirmLink('https://discord.gg/Gb7y5bXNCm')">Discord</button>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="preview-wrapper" id="preview">
+      <div class="preview-card">
+        <div class="preview-tabs">
+          <button class="tab-pill active" data-preview="CrystalHome.png">Home</button>
+          <button class="tab-pill" data-preview="CrystalEditor.png">Editor</button>
+          <button class="tab-pill" data-preview="CrystalSettings.png">Settings</button>
+          <button class="tab-pill" data-preview="CrystalScripts.png">Scripts</button>
+          <button class="tab-pill" data-preview="CrystalConsole.png">Console</button>
+        </div>
+        <div class="preview-image">
+          <img id="preview-img" src="CrystalHome.png" alt="Preview">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= CHANGELOG ================= -->
+<section id="changelog">
+  <h2>Changelog - V 1.0.8</h2>
+  <div class="changelog-box">
+    <ul>
+      <li>+ New Console tab</li>
+      <li>+ Updated Editor Background</li>
+      <li>+ New loading screen</li>
+      <li>+ UI polish pass</li>
+      <li>+ Faster Injection</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= DOWNLOAD ================= -->
+<section id="download">
+  <h2>Download</h2>
+  <div class="download-box">
+    <p>Windows 10 / 11 • x64</p>
+    <button class="primary" onclick="confirmLink('https://gofile.io/d/52R60f')">Download ⭳</button>
+
+    <div class="video-wrapper">
+      <iframe
+        width="100%"
+        height="315"
+        src="https://www.youtube.com/embed/0xmJphLwcxQ"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<script>
+function confirmLink(url) {
+  if (url.startsWith('http')) {
+    const confirmation = confirm("Warning: This will take you to an off-platform site. Do you want to continue?");
+    if (confirmation) {
+      window.open(url, "_blank");
+    }
+  } else {
+    window.open(url, "_self");
+  }
+}
+
+const previewImg = document.getElementById('preview-img');
+document.querySelectorAll('.tab-pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    previewImg.src = btn.dataset.preview;
+  });
+});
+</script>
+
+</body>
+</html>
