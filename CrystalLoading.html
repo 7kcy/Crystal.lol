@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Crystal • Loading</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="CrystalLogo.png">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Optional subtle glow */
+.loading-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter:
+    drop-shadow(0 0 30px rgba(255,255,255,0.35))
+    drop-shadow(0 0 60px rgba(255,255,255,0.15));
+}
+
+.loading-wrapper img {
+  max-width: 320px;
+  width: 60vw;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="loading-wrapper">
+  <img src="CrystalGif.gif" alt="Crystal Loading">
+</div>
+
+</body>
+</html>
