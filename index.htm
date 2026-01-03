@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <title>Crystal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="images/CrystalIcon.ico">
+
+<!-- FAVICON -->
+<link rel="icon" type="image/png" href="CrystalLogo.png">
 
 <style>
 /* ================= ROOT ================= */
@@ -14,6 +18,10 @@
 /* ================= BASE ================= */
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -35,7 +43,8 @@ body {
   background: rgba(0, 0, 0, 0.85);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 20px;
   font-size: 1.5rem;
   font-weight: bold;
   z-index: 100;
@@ -43,7 +52,24 @@ body {
   backdrop-filter: blur(4px);
 }
 
-/* ================= COOL BACKGROUND ================= */
+.top-tabs {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.top-tabs a {
+  color: white;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.top-tabs a:hover {
+  opacity: 1;
+}
+
+/* ================= ANIMATED BACKGROUND ================= */
 .animated-bg {
   position: fixed;
   inset: 0;
@@ -66,8 +92,20 @@ body {
 }
 
 @keyframes bgFloat {
-  0% { background-position: 0 0, 0 0, 0 0, 0 0; }
-  100% { background-position: 0 0, 200px 200px, 600px 600px, 600px 600px; }
+  0% {
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+  100% {
+    background-position:
+      0 0,
+      200px 200px,
+      600px 600px,
+      600px 600px;
+  }
 }
 
 /* ================= FLOATING LOGO ================= */
@@ -81,9 +119,7 @@ body {
   filter:
     drop-shadow(0 0 30px rgba(255,255,255,0.45))
     drop-shadow(0 0 60px rgba(255,255,255,0.2));
-  animation:
-    crystalFloat 6s ease-in-out infinite,
-    fadeIn 1.2s ease-out forwards;
+  animation: crystalFloat 6s ease-in-out infinite;
 }
 
 @keyframes crystalFloat {
@@ -97,31 +133,16 @@ body {
   padding-bottom: 60px;
   max-width: 900px;
   margin: 0 auto;
-  padding-left: 24px;
-  padding-right: 24px;
-  text-align: center;
 }
 
 .hero-inner {
   max-width: 700px;
   margin: 0 auto;
-  animation: fadeInUp 1.2s ease-out forwards;
 }
 
 .hero h1 {
   font-size: clamp(3.5rem, 6vw, 5.5rem);
-  line-height: 1.05;
   margin-bottom: 24px;
-  background: linear-gradient(120deg,#ffffff,#cfcfcf,#ffffff);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: textShimmer 6s linear infinite, fadeIn 1.2s ease-out forwards;
-}
-
-@keyframes textShimmer {
-  from { background-position: 0% 50%; }
-  to   { background-position: 200% 50%; }
 }
 
 .hero p {
@@ -129,7 +150,6 @@ body {
   margin: 0 auto 32px auto;
   opacity: 0.9;
   font-size: 19px;
-  line-height: 1.5;
 }
 
 /* ================= BUTTONS ================= */
@@ -166,37 +186,23 @@ button:hover {
   border: 1px solid rgba(255,255,255,0.4);
 }
 
-/* ================= PREVIEW CARD + TABS ================= */
+/* ================= PREVIEW ================= */
 .preview-wrapper {
   margin-top: 40px;
-  animation: fadeInUp 1.6s ease-out forwards;
 }
 
 .preview-card {
   background: rgba(255,255,255,0.04);
   border-radius: 20px;
-  padding: 18px 18px 20px;
+  padding: 18px;
   border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: 0 0 30px rgba(255,255,255,0.2);
   backdrop-filter: blur(10px);
-}
-
-.preview-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-  font-size: 14px;
-  opacity: 0.9;
-}
-
-.preview-title {
-  font-weight: 600;
 }
 
 .preview-tabs {
   display: flex;
   gap: 8px;
+  justify-content: center;
 }
 
 .tab-pill {
@@ -204,153 +210,73 @@ button:hover {
   border-radius: 999px;
   border: 1px solid rgba(255,255,255,0.4);
   background: transparent;
-  color: #fff;
+  color: white;
   font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   cursor: pointer;
-  transition: 0.18s ease-out;
 }
 
 .tab-pill.active {
-  background: #fff;
-  color: #000;
-  box-shadow: 0 0 16px rgba(255,255,255,0.8);
-}
-
-.preview-image {
-  margin-top: 14px;
+  background: white;
+  color: black;
 }
 
 .preview-image img {
   width: 100%;
   border-radius: 14px;
+  margin-top: 14px;
   border: 1px solid rgba(255,255,255,0.5);
-  display: block;
-  transition: opacity 0.18s ease-out, transform 0.18s ease-out;
 }
 
-/* ================= SECTIONS / LAYOUT ================= */
+/* ================= SECTIONS ================= */
 section {
   padding: 60px 24px;
   max-width: 900px;
   margin: 0 auto;
-  text-align: center;
 }
 
-/* Scroll reveal base */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.45s ease-out, transform 0.45s ease-out;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ================= IMPROVED CHANGELOG ================= */
-section h2 {
-  font-size: 2.2rem;
-  margin-bottom: 16px;
-  text-shadow: 0 0 20px rgba(255,255,255,0.4);
-}
-
+/* ================= CHANGELOG ================= */
 .changelog-box {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.18);
   padding: 24px;
   border-radius: 16px;
-  box-shadow: 0 0 35px rgba(255,255,255,0.12);
-  backdrop-filter: blur(8px);
-}
-
-.changelog-meta {
-  font-size: 13px;
-  opacity: 0.8;
-  margin-bottom: 12px;
-}
-
-.changelog-box ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-.changelog-box li {
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  font-size: 16px;
-}
-
-.changelog-box li:last-child {
-  border-bottom: none;
 }
 
 /* ================= DOWNLOAD ================= */
 .download-box {
   background: rgba(255,255,255,0.04);
-  border-radius: 16px;
-  padding: 24px;
   border: 1px solid rgba(255,255,255,0.18);
-  box-shadow: 0 0 30px rgba(255,255,255,0.1);
-}
-
-/* ================= MODAL ================= */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(6px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 50;
-}
-
-.modal-box {
-  background: rgba(20,20,20,0.9);
-  padding: 28px;
+  padding: 24px;
   border-radius: 16px;
-  width: 320px;
-  text-align: center;
-  border: 1px solid rgba(255,255,255,0.15);
 }
 
-.modal-buttons {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.modal-buttons button {
-  flex: 1;
-}
-
-/* ================= ANIMATIONS ================= */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* ================= VIDEO ================= */
+.video-wrapper {
+  margin-top: 30px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 </style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
-<div class="top-bar">Crystal</div>
+<div class="top-bar">
+  Crystal
+  <div class="top-tabs">
+    <a href="#home">Home</a>
+    <a href="#preview">Preview</a>
+    <a href="#changelog">Changelog</a>
+    <a href="#download">Download</a>
+  </div>
+</div>
 
 <div class="animated-bg"></div>
 <img src="CrystalLogo.png" class="crystal-logo">
 
 <!-- ================= HERO ================= -->
-<div class="hero">
+<div class="hero" id="home">
   <div class="hero-inner">
     <h1>Sharp as a diamond.<br>Built to feel unreal.</h1>
     <p>
@@ -359,28 +285,24 @@ section h2 {
     </p>
 
     <div class="buttons">
-      <button class="primary" onclick="confirmLink('https://gofile.io/d/52R60f')">
-        Download ⭳
-      </button>
-      <button class="secondary" onclick="window.open('CrystalMonaco.htm', '_blank')">
-        Open Monaco
-      </button>
+      <button class="primary" onclick="confirmLink('https://gofile.io/d/52R60f')">Download ⭳</button>
+      <button class="secondary" onclick="confirmLink('CrystalMonaco.htm')">Open Monaco</button>
+      <button class="secondary" onclick="confirmLink('CrystalLoading.html')">Loading</button>
+      <button class="secondary" onclick="confirmLink('https://discord.gg/Gb7y5bXNCm')">Discord</button>
     </div>
 
-    <!-- ================= PREVIEW + TABS ================= -->
-    <div class="preview-wrapper reveal">
-      <div class="preview-card" id="preview-card">
-        <div class="preview-header">
-          <div class="preview-title">Crystal Client</div>
-          <div class="preview-tabs">
-            <button class="tab-pill active" data-preview="CrystalHome.png">Home</button>
-            <button class="tab-pill" data-preview="CrystalEditor.png">Editor</button>
-            <button class="tab-pill" data-preview="CrystalSettings.png">Settings</button>
-            <button class="tab-pill" data-preview="CrystalScripts.png">Scripts</button>
-          </div>
+    <!-- PREVIEW -->
+    <div class="preview-wrapper" id="preview">
+      <div class="preview-card">
+        <div class="preview-tabs">
+          <button class="tab-pill active" data-preview="CrystalHome.png">Home</button>
+          <button class="tab-pill" data-preview="CrystalEditor.png">Editor</button>
+          <button class="tab-pill" data-preview="CrystalSettings.png">Settings</button>
+          <button class="tab-pill" data-preview="CrystalScripts.png">Scripts</button>
+          <button class="tab-pill" data-preview="CrystalConsole.png">Console</button>
         </div>
         <div class="preview-image">
-          <img id="preview-img" src="CrystalHome.png" alt="Crystal preview">
+          <img id="preview-img" src="CrystalHome.png" alt="Preview">
         </div>
       </div>
     </div>
@@ -389,95 +311,58 @@ section h2 {
 </div>
 
 <!-- ================= CHANGELOG ================= -->
-<section class="reveal">
+<section id="changelog">
   <h2>Changelog - V 1.0.8</h2>
   <div class="changelog-box">
-    <div class="changelog-meta">Latest updates to the Crystal client.</div>
     <ul>
       <li>+ New Console tab</li>
       <li>+ Updated Editor Background</li>
       <li>+ New loading screen</li>
       <li>+ UI polish pass</li>
-      <li>+ New animations</li>
       <li>+ Faster Injection</li>
     </ul>
   </div>
 </section>
 
 <!-- ================= DOWNLOAD ================= -->
-<section class="reveal">
+<section id="download">
   <h2>Download</h2>
   <div class="download-box">
     <p>Windows 10 / 11 • x64</p>
-    <button class="primary" onclick="confirmLink('https://gofile.io/d/52R60f')">
-      Download ⭳
-    </button>
+    <button class="primary" onclick="confirmLink('https://gofile.io/d/52R60f')">Download ⭳</button>
+
+    <div class="video-wrapper">
+      <iframe
+        width="100%"
+        height="315"
+        src="https://www.youtube.com/embed/0xmJphLwcxQ"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
   </div>
 </section>
 
-<!-- ================= MODAL ================= -->
-<div class="modal" id="confirmModal">
-  <div class="modal-box">
-    <h3>Leaving site</h3>
-    <p>This will take you to an off-platform link. Are you sure?</p>
-    <div class="modal-buttons">
-      <button class="secondary" onclick="closeModal()">No</button>
-      <button class="primary" id="confirmYes">Yes</button>
-    </div>
-  </div>
-</div>
-
 <script>
-let pendingLink = "";
-
-// Modal link confirm
 function confirmLink(url) {
-  pendingLink = url;
-  document.getElementById("confirmModal").style.display = "flex";
+  if (url.startsWith('http')) {
+    const confirmation = confirm("Warning: This will take you to an off-platform site. Do you want to continue?");
+    if (confirmation) {
+      window.open(url, "_blank");
+    }
+  } else {
+    window.open(url, "_self");
+  }
 }
 
-function closeModal() {
-  document.getElementById("confirmModal").style.display = "none";
-}
-
-document.getElementById("confirmYes").onclick = () => {
-  window.open(pendingLink, "_blank");
-  closeModal();
-};
-
-// Tabs / preview switching
 const previewImg = document.getElementById('preview-img');
-const tabButtons = document.querySelectorAll('.tab-pill');
-
-tabButtons.forEach(btn => {
+document.querySelectorAll('.tab-pill').forEach(btn => {
   btn.addEventListener('click', () => {
-    tabButtons.forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-pill').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    const src = btn.getAttribute('data-preview');
-    if (!src) return;
-    previewImg.style.opacity = "0";
-    previewImg.style.transform = "scale(0.98)";
-    setTimeout(() => {
-      previewImg.src = src;
-      previewImg.style.opacity = "1";
-      previewImg.style.transform = "scale(1)";
-    }, 170);
+    previewImg.src = btn.dataset.preview;
   });
 });
-
-// Scroll reveal (load-in when viewable)
-const revealEls = document.querySelectorAll('.reveal');
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
-
-revealEls.forEach(el => observer.observe(el));
 </script>
 
 </body>
